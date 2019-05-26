@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS tacos_db;
+USE tacos_db;
+CREATE TABLE IF NOT EXISTS tacos(
+  id INT NOT NULL AUTO_INCREMENT,
+  taco_name VARCHAR(45) NOT NULL,
+  shell VARCHAR(45) NOT NULL,
+  vegetarian BOOLEAN NOT NULL,
+  picked_uo BOOLEAN NOT NULL,
+  PRIMARY KEY (id)
+);
+
