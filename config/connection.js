@@ -8,16 +8,16 @@ const connection = mysql.createConnection({
     database: "tacos_db"
 });
 
-module.exports = function (app) {
-    connection.connect(function (err) {
+
+connection.connect(function (err) {
+    if (err) throw err;
+    console.log("connected as id " + connection.threadId);
+    connection.query("SELECT * FROM tacos", function (err, res) {
         if (err) throw err;
-        console.log("connected as id " + connection.threadId);
-        connection.query("SELECT * FROM tacos", function (err, res) {
-            if (err) throw err;
-            let tacoList = res;
-            console.log(tacoList);
-        }
-        )
-        connection.end();
-    });
-};
+        let tacoList = res;
+        console.log(tacoList);
+    }
+    )
+    connection.end();
+});
+module.exports = connection;
