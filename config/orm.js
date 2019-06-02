@@ -28,7 +28,7 @@ const orm = {
         });
     },
     insertOne: function (tableName, cols, vals, callback) {
-        var queryString = "INSERT INTO " + table;
+        var queryString = "INSERT INTO " + tableName;
 
         queryString += " (";
         queryString += cols.toString();
@@ -69,4 +69,3 @@ const orm = {
     }
 };
 module.exports = orm;
-
