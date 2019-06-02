@@ -1,0 +1,44 @@
+<h1>tacos</h1>
+
+<h2>Tacos that are not picked up</h2>
+
+<ul>
+    {{#each tacos}}
+    {{#unless picked_up}}
+    {{> tacos/taco-block picked_up=true}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>tacos that are picked up!</h2>
+
+<ul>
+    {{#each tacos}}
+    {{#if picked_up}}
+    {{> tacos/taco-block picked_up=false}}
+    {{/if}}
+    {{/each}}
+</ul>
+
+<h2>create a taco</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="ca">taco:</label>
+        <input type="text" id="taconame" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="sleepy">shell?</label><br>
+        <input type="radio" name="sleepy" value="1" checked> hard!<br>
+        <input type="radio" name="sleepy" value="0"> soft
+    </div>
+
+    <div class="form-group">
+        <label for="sleepy">vegetarian: </label><br>
+        <input type="radio" name="sleepy" value="1" checked> true!<br>
+        <input type="radio" name="sleepy" value="0"> false
+    </div>
+
+    <button type="submit">Add ya taco </button>
+</form>
