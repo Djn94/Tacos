@@ -7,9 +7,10 @@ const orm = {
             console.log(result)
         });
     },
-    insertOne: function () {
-        const queryString = "";
-        connection.query(queryString, [], function (err, result) {
+    insertOne: function (taconame, shell, vegetarian, pickedup) {
+        const queryString = "INSERT INTO tacos SET ?";
+        //taco_name, shell, vegetarian, picked_up
+        connection.query(queryString, [taconame, shell, vegetarian, pickedup], function (err, result) {
             if (err) throw err;
             console.log(result)
         })
@@ -22,10 +23,5 @@ const orm = {
         })
     },
 }
-// selectAll()` __ MYSQL query to select * from tavos
-//      * `insertOne()`   MYSQL query to add tacos
-//      * `updateOne()`  MYSQL query to change attibute of tacos
-
-
 module.exports = orm;
 

@@ -1,5 +1,3 @@
-module.export(function (app) {
-    require("../config/orm")(app);
-
-    //idk what this means yet
-});
+const orm = require("./config/orm.js");
+orm.selectAll("tacos");
+orm.insertOne("nuTaco", "hard", "false", "false");
