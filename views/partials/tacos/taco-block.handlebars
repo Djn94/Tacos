@@ -1,19 +1,7 @@
 <li>
-    {{#if picked_up}}
     {{taco_name}}
     <button class="tacoGrab" data-id="{{id}}" data-pickedup="{{picked_up}}">
-        {{#if picked_up}}Pick up your taco!{{/if}}
+        {{#if picked_up}}Pick up your taco{{else}}Eat the taco!{{/if}}
     </button>
-    {{/if}}
 
-
-</li>
-<li>
-    {{#unless picked_up}}
-    {{taco_name}}
-
-    <button class="tacoEat" data-id="{{id}}" data-pickedup="{{picked_up}}">
-        {{#unless picked_up}}Eat the taco!{{/unless}}
-    </button>
-    {{/unless}}
 </li>

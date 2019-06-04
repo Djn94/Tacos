@@ -1,24 +1,25 @@
 <h1>tacos</h1>
 
-<h2>Tacos that are not picked up</h2>
 
+<h2>tacos that are not picked up.</h2>
 <ul>
     {{#each tacos}}
     {{#unless picked_up}}
-    {{> tacos/taco-block picked_up=true}}
+    {{> tacos/taco-block picked_up=false}}
     {{/unless}}
     {{/each}}
 </ul>
 
-<h2>tacos that are picked up!</h2>
+<h2>Tacos that are picked up</h2>
 
 <ul>
     {{#each tacos}}
     {{#if picked_up}}
-    {{> tacos/taco-block picked_up=false}}
+    {{> tacos/taco-block picked_up=true}}
     {{/if}}
     {{/each}}
 </ul>
+
 
 <h2>create a taco</h2>
 <form class="create-form">
