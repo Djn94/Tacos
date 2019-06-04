@@ -1,4 +1,7 @@
 <li>
-    {{name}}
+    {{taco_name}}
+    <button class="tacoGrab" data-id="{{id}}" data-pickedup="{{picked_up}}">
+        {{#if picked_up}}Here you go !{{else}}Pick up!{{/if}}
+    </button>
 
 </li>
