@@ -49,16 +49,38 @@
         $("#submitButton").on("click", function (event) {
             event.preventDefault();
             console.log("it worked");
-        })
+            //create route to add taco
+        });
         $(".tacoGrab").on("click", function (event) {
             event.preventDefault();
             console.log("it grabbed");
-        })
-        $(".tacoEat").on("click", function (event) {
-            event.preventDefault();
-            console.log("it was eaten");
-        })
+            //update route picked_up to false
+            var id = $(this).data("id");
+            console.log($(this).data("pickedup"))
+            console.log('ABOVE THIS IS PICKEDUP')
+            var pickedUp = ($(this).data("pickedup"));
+            const nowGrabbed = {
+                picked_up: true
+            }
+            //pickedUp not console logging corectly
+            $.ajax("/api/tacos" + id, {
+                type: "PUT",
+                data: nowGrabbed
+            }.then(function () {
+                console.log("successfully updated taco");
+                location.reload();
+            }));
 
 
-    });
+            $(".tacoEat").on("click", function (event) {
+                event.preventDefault();
+                console.log("it was eaten");
+                //delete route to delete taco
+            })
+
+
+        });
+    }
+    );
+
 </script>
