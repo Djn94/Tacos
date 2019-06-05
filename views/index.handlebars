@@ -50,37 +50,54 @@
             event.preventDefault();
             console.log("it worked");
             //create route to add taco
+            const newTaco = {
+                name: $("taco name field").val().trim(),
+                shell: $("shell answer info").val().trim(),
+                vegetarian: $("vegetarian answer info"),
+                picked_up: false
+            };
+            $.ajax("/api/tacos/", {
+                type: "POST",
+                data: newTaco
+            }).then(function () {
+                console.log("you added a taco!");
+                console.log(newTaco);
+            })
         });
+
         $(".tacoGrab").on("click", function (event) {
             event.preventDefault();
             console.log("it grabbed");
             //update route picked_up to false
             var id = $(this).data("id");
-            console.log($(this).data("pickedup"))
-            console.log('ABOVE THIS IS PICKEDUP')
+            console.log($(this).data("pickedup"));
+            console.log('ABOVE THIS IS PICKEDUP');
             var pickedUp = ($(this).data("pickedup"));
             const nowGrabbed = {
-                picked_up: true
+                pickedup: true
             }
+            console.log(nowGrabbed);
             //pickedUp not console logging corectly
-            $.ajax("/api/tacos" + id, {
+            $.ajax("/api/tacos/" + id, {
                 type: "PUT",
                 data: nowGrabbed
             }.then(function () {
-                console.log("successfully updated taco");
+                console.log("pick up that taco oo");
                 location.reload();
             }));
-
-
-            $(".tacoEat").on("click", function (event) {
-                event.preventDefault();
-                console.log("it was eaten");
-                //delete route to delete taco
-            })
-
-
         });
-    }
-    );
-
+        $(".tacoEat").on("click", function (event) {
+            event.preventDefault();
+            console.log("it was eaten");
+            const id = $(this).data("id")
+            //delete route to delete taco
+            //delete route returning 404
+            $.ajax("/api/tacos/" + id, {
+                type: "DELETE"
+            }).then(function () {
+                console.log('deleteddd');
+                location.reload();
+            })
+        })
+    });
 </script>
