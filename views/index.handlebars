@@ -1,103 +1,112 @@
-<h1>tacos</h1>
-
-
-<h2>tacos that are not picked up.</h2>
-<ul>
-    {{#each tacos}}
-    {{#unless picked_up}}
-    {{> tacos/taco-block picked_up=false}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Tacos that are picked up</h2>
-
-<ul>
-    {{#each tacos}}
-    {{#if picked_up}}
-    {{> tacos/taco-block picked_up=true}}
-    {{/if}}
-    {{/each}}
-</ul>
-
-
-<h2>create a taco</h2>
-<form class="create-form">
-
-    <div class="form-group">
-        <label for="ca">taco:</label>
-        <input type="text" id="taconame" name="name">
+<div class="container">
+    <div class="row">
+        <h1>tacos</h1>
     </div>
+    <div class="row">
+        <div class="col-m-3">
+            <h2>tacos that are not picked up.</h2>
+            <ul>
+                {{#each tacos}}
+                {{#unless picked_up}}
+                {{> tacos/taco-block picked_up=false}}
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
 
-    <div class="form-group">
-        <label for="sleepy">shell?</label><br>
-        <input type="radio" name="shell" value="1" checked> hard!<br>
-        <input type="radio" name="shell" value="0"> soft
+        <div class="col-m-6">
+
+            <h2>create a taco</h2>
+            <form class="create-form">
+
+                <div class="form-group">
+                    <label for="ca">taco:</label>
+                    <input type="text" id="taconame" name="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="sleepy">shell?</label><br>
+                    <input type="radio" name="shell" value="1" checked> hard!<br>
+                    <input type="radio" name="shell" value="0"> soft
+                </div>
+
+                <div class="form-group">
+                    <label for="sleepy">vegetarian: </label><br>
+                    <input type="radio" name="vegetarian" value="1" checked> true!<br>
+                    <input type="radio" name="vegetarian" value="0"> false
+                </div>
+
+                <button type="submit" id="submitButton">Add ya taco </button>
+            </form>
+        </div>
+        <div class="col-m-3>" <h2>Tacos that are picked up</h2>
+
+            <ul>
+                {{#each tacos}}
+                {{#if picked_up}}
+                {{> tacos/taco-block picked_up=true}}
+                {{/if}}
+                {{/each}}
+            </ul>
+            <script>
+                $(function () {
+                    console.log('java running')
+                    $("#submitButton").on("click", function (event) {
+                        event.preventDefault();
+                        console.log("it worked");
+                        //create route to add taco
+                        const newTaco = {
+                            name: $("taco name field").val().trim(),
+                            shell: $("shell answer info").val().trim(),
+                            vegetarian: $("vegetarian answer info"),
+                            picked_up: false
+                        };
+                        $.ajax("/api/tacos/", {
+                            type: "POST",
+                            data: newTaco
+                        }).then(function () {
+                            console.log("you added a taco!");
+                            console.log(newTaco);
+                        })
+                    });
+
+                    $(".tacoGrab").on("click", function (event) {
+                        event.preventDefault();
+                        console.log("it grabbed");
+                        //update route picked_up to false
+                        var id = $(this).data("id");
+                        console.log($(this).data("pickedup"));
+                        console.log('ABOVE THIS IS PICKEDUP');
+                        var pickedUp = ($(this).data("pickedup"));
+                        const nowGrabbed = {
+                            pickedup: true
+                        }
+                        console.log(nowGrabbed);
+                        //pickedUp not console logging corectly
+                        $.ajax("/api/tacos/" + id, {
+                            type: "PUT",
+                            data: nowGrabbed
+                        }.then(function () {
+                            console.log("pick up that taco oo");
+                            location.reload();
+                        }));
+                    });
+                    $(".tacoEat").on("click", function (event) {
+                        event.preventDefault();
+                        console.log("it was eaten");
+                        const id = $(this).data("id")
+                        //delete route to delete taco
+                        //delete route returning 404
+                        $.ajax("/api/tacos/" + id, {
+                            type: "DELETE"
+                        }).then(function () {
+                            console.log('deleteddd');
+                            location.reload();
+                        })
+                    })
+                });
+            </script>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="sleepy">vegetarian: </label><br>
-        <input type="radio" name="vegetarian" value="1" checked> true!<br>
-        <input type="radio" name="vegetarian" value="0"> false
-    </div>
-
-    <button type="submit" id="submitButton">Add ya taco </button>
-</form>
-<script>
-    $(function () {
-        console.log('java running')
-        $("#submitButton").on("click", function (event) {
-            event.preventDefault();
-            console.log("it worked");
-            //create route to add taco
-            const newTaco = {
-                name: $("taco name field").val().trim(),
-                shell: $("shell answer info").val().trim(),
-                vegetarian: $("vegetarian answer info"),
-                picked_up: false
-            };
-            $.ajax("/api/tacos/", {
-                type: "POST",
-                data: newTaco
-            }).then(function () {
-                console.log("you added a taco!");
-                console.log(newTaco);
-            })
-        });
-
-        $(".tacoGrab").on("click", function (event) {
-            event.preventDefault();
-            console.log("it grabbed");
-            //update route picked_up to false
-            var id = $(this).data("id");
-            console.log($(this).data("pickedup"));
-            console.log('ABOVE THIS IS PICKEDUP');
-            var pickedUp = ($(this).data("pickedup"));
-            const nowGrabbed = {
-                pickedup: true
-            }
-            console.log(nowGrabbed);
-            //pickedUp not console logging corectly
-            $.ajax("/api/tacos/" + id, {
-                type: "PUT",
-                data: nowGrabbed
-            }.then(function () {
-                console.log("pick up that taco oo");
-                location.reload();
-            }));
-        });
-        $(".tacoEat").on("click", function (event) {
-            event.preventDefault();
-            console.log("it was eaten");
-            const id = $(this).data("id")
-            //delete route to delete taco
-            //delete route returning 404
-            $.ajax("/api/tacos/" + id, {
-                type: "DELETE"
-            }).then(function () {
-                console.log('deleteddd');
-                location.reload();
-            })
-        })
-    });
-</script>
+</div>
+</div>
