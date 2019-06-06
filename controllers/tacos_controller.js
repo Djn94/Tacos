@@ -12,9 +12,25 @@ router.get("/", function (req, res) {
         res.render("index", hbsObject);
     });
 });
-// selectAll()` __ MYSQL query to select * from tavos
-//      * `insertOne()`   MYSQL query to add tacos
-//      * `updateOne()`  MYSQL query to change attibute of tacos
+router.post("/api/tacos", function (req, res) {
+    taco.insertOne([
+        "taco_name", "shell", "vegetarian", "picked_up"
+    ], [req.body.taco_name, req.body.shell, req.body.vegetarian, req.body.picked_up], function (result) {
+        res.json({ id: result.insertId });
+    });
+});
+router.put("/api/cats/:id", function (req, res) {
+    const id = "id =" + req.params.id;
+    taco.updateOne({ picked_up: req.body.picked_up }, id, function (results) {
+        res.status(200).end();
+    })
+})
+router.delete("api/tacos/:id", function (req, res) {
+    const id = "id =" + req.params.id;
+    taco.delete(id, function (result) {
+        res.status(200).end();
+    });
+});
 module.exports = router;
 
 
