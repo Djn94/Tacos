@@ -1,15 +1,15 @@
-const connection = require("./connection.js");
+var connection = require("./connection.js");
 function printQuestionMarks(num) {
-    const arr = [];
-    for (const i = 0; i < num; i++) {
+    var arr = [];
+    for (var i = 0; i < num; i++) {
         arr.push("?");
     }
     return arr.toString();
 };
 function objToSql(object) {
-    const arr = [];
+    var arr = [];
     for (var key in object) {
-        const value = object[key];
+        var value = object[key];
         if (Object.hasOwnProperty.call(object, key)) {
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
@@ -19,9 +19,9 @@ function objToSql(object) {
     }
     return arr.toString();
 };
-const orm = {
+var orm = {
     selectAll: function (tableName, callback) {
-        const queryString = "SELECT * FROM " + tableName + ";";
+        var queryString = "SELECT * FROM " + tableName + ";";
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             callback(result)
@@ -44,7 +44,7 @@ const orm = {
         })
     },
     updateOne: function (tableName, objColVals, condition, callback) {
-        const queryString = "UPDATE "; +tableName;
+        var queryString = "UPDATE "; +tableName;
         queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
@@ -56,7 +56,7 @@ const orm = {
         })
     },
     delete: function (tableName, condition, callback) {
-        const queryString = "DELETE FROM " + tableName;
+        var queryString = "DELETE FROM " + tableName;
         queryString += " WHERE ";
         queryString += condition;
         connection.query(queryString, function (err, result) {
