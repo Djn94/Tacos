@@ -54,13 +54,13 @@
                     $("#submitButton").on("click", function (event) {
                         event.preventDefault();
                         console.log("it worked");
-                        //create route to add taco
                         const newTaco = {
-                            name: $("#taconame").val().trim(),
-                            shell: $(".shell").val().trim(),
+                            taco_name: $("#taconame").val().trim(),
+                            shell: $(".shell").val(),
                             vegetarian: $(".vegetarian").val(),
-                            picked_up: false
+                            picked_up: $(".vegetarian").val(),
                         };
+                        console.log(newTaco);
                         $.ajax("/api/tacos/", {
                             type: "POST",
                             data: newTaco
@@ -86,10 +86,10 @@
                         $.ajax("/api/tacos/" + id, {
                             type: "PUT",
                             data: nowGrabbed
-                        }.then(function () {
+                        }).then(function () {
                             console.log("pick up that taco oo");
                             location.reload();
-                        }));
+                        });
                     });
                     $(".tacoEat").on("click", function (event) {
                         event.preventDefault();

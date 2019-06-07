@@ -1,10 +1,10 @@
 USE tacos_db;
 INSERT INTO tacos (taco_name, shell, vegetarian, picked_up)
-VALUES ("carne_guisada", "hard", false, false);
+VALUES ("carne asada", "hard", false, false);
 INSERT INTO tacos (taco_name, shell, vegetarian, picked_up)
-VALUES ("tofu_taco", "soft", true, false);
+VALUES ("tofu", "soft", true, false);
 INSERT INTO tacos (taco_name, shell, vegetarian, picked_up)
-VALUES ("de_Lengua", "hard", false, false);
+VALUES ("de Lengua", "hard", false, false);
 INSERT INTO tacos (taco_name, shell, vegetarian, picked_up)
 VALUES ("de gato", "hard", false, true);
 
