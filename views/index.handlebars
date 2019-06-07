@@ -35,6 +35,10 @@
                     <input type="radio" name="vegetarian" class="vegetarian" value="1" checked> true!<br>
                     <input type="radio" name="vegetarian" class="vegetarian" value="0"> false
                 </div>
+                <div class="form-group">
+                    <label for="picked_up">have you somehow already grabbed ya taco?: </label><br>
+                    <input type="radio" name="pickedup" class="pickedup" value="0"> No sir sure didn't
+                </div>
 
                 <button type="submit" id="submitButton">Add ya taco </button>
             </form>
@@ -58,7 +62,7 @@
                             taco_name: $("#taconame").val().trim(),
                             shell: $(".shell").val(),
                             vegetarian: $(".vegetarian").val(),
-                            picked_up: $(".vegetarian").val(),
+                            picked_up: $(".pickedup").val(),
                         };
                         console.log(newTaco);
                         $.ajax("/api/tacos/", {
@@ -67,6 +71,7 @@
                         }).then(function () {
                             console.log("you added a taco!");
                             console.log(newTaco);
+                            location.reload();
                         })
                     });
 
