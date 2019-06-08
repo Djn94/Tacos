@@ -9,7 +9,7 @@ connection = mysql.createConnection({
     port: 3306,
     user: "	c49cqv34it2e3bka",
     password: "kgwarx8mm3x7trun",
-    database: "m3g4qn6wnpzj31uo	"
+    database: "m3g4qn6wnpzj31uo"
 }
 )
 //}
