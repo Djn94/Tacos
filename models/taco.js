@@ -15,7 +15,7 @@ const taco = {
             callback(res);
         });
     },
-    delete: function (condition, cb) {
+    delete: function (condition, callback) {
         orm.delete("tacos", condition, function (res) {
             callback(res);
         })

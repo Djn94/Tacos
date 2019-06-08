@@ -54,6 +54,7 @@
             </ul>
             <script>
                 $(function () {
+
                     console.log('java running')
                     $("#submitButton").on("click", function (event) {
                         event.preventDefault();
@@ -80,35 +81,31 @@
                         console.log("it grabbed");
                         //update route picked_up to false
                         var id = $(this).data("id");
-                        console.log($(this).data("pickedup"));
-                        console.log('ABOVE THIS IS PICKEDUP');
                         var pickedUp = ($(this).data("pickedup"));
+                        console.log('weird')
                         const nowGrabbed = {
                             pickedup: true
-                        }
-                        console.log(nowGrabbed);
-                        //pickedUp not console logging corectly
-                        $.ajax("/api/tacos/" + id, {
+                        };
+                        console.log('ajax incoming')
+                        $.ajax("api/tacos/" + id, {
                             type: "PUT",
                             data: nowGrabbed
                         }).then(function () {
-                            console.log("pick up that taco oo");
-                            location.reload();
+                            console.log('aaaye the ajax ran!!')
                         });
                     });
                     $(".tacoEat").on("click", function (event) {
                         event.preventDefault();
                         console.log("it was eaten");
                         const id = $(this).data("id")
-                        //delete route to delete taco
-                        //delete route returning 404
-                        $.ajax("/api/tacos/" + id, {
-                            type: "DELETE"
-                        }).then(function () {
-                            console.log('deleteddd');
-                            location.reload();
-                        })
-                    })
+                        $.ajax({
+                            url: "/api/tacos" + id,
+                            type: "DELETE",
+                            success: function (result) {
+                                console.log('fuck yeah')
+                            }
+                        });
+                    });
                 });
             </script>
         </div>

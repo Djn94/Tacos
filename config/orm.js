@@ -49,7 +49,7 @@ var orm = {
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
-
+        console.log(queryString);
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             callback(result);
@@ -59,6 +59,7 @@ var orm = {
         var queryString = "DELETE FROM " + tableName;
         queryString += " WHERE ";
         queryString += condition;
+        console.log(queryString);
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;

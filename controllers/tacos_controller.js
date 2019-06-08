@@ -21,9 +21,14 @@ router.post("/api/tacos", function (req, res) {
 });
 router.put("/api/cats/:id", function (req, res) {
     const id = "id =" + req.params.id;
-    taco.updateOne({ picked_up: req.body.picked_up }, id, function (results) {
-        res.status(200).end();
-    })
+    taco.updateOne(
+        { picked_up: req.body.picked_up },
+        id, function (result) {
+            if (result.changedRows === 0) {
+                return res.status(404).end();
+            }
+            res.status(200).end();
+        })
 })
 router.delete("api/tacos/:id", function (req, res) {
     const id = "id =" + req.params.id;
