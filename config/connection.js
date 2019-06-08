@@ -10,8 +10,12 @@ connection = mysql.createConnection({
     user: "vzfyijigrxv6lr8z",
     password: "qy1icnt6lzu1npjz",
     database: "soql2durgodccs8p"
-}
-)
+    // host: "localhost",
+    // port: 3306,
+    // user: "root",
+    // password: "root",
+    // database: "tacos_db"
+});
 //}
 connection.connect(function (err) {
     if (err) throw err;
