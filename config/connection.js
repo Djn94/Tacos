@@ -7,9 +7,9 @@ let connection;
 connection = mysql.createConnection({
     host: "k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     port: 3306,
-    user: "	c49cqv34it2e3bka",
-    password: "kgwarx8mm3x7trun",
-    database: "m3g4qn6wnpzj31uo"
+    user: "vzfyijigrxv6lr8z",
+    password: "qy1icnt6lzu1npjz",
+    database: "soql2durgodccs8p"
 }
 )
 //}
