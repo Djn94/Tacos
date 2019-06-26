@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS tacos(
   taco_name VARCHAR(45) NOT NULL,
   shell VARCHAR(45) NOT NULL,
   vegetarian BOOLEAN NOT NULL,
-  picked_uo BOOLEAN NOT NULL,
+  picked_up BOOLEAN NOT NULL,
+  createdat TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+
   PRIMARY KEY (id)
 );
 
