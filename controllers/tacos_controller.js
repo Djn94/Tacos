@@ -2,16 +2,16 @@ const express = require("express");
 const router = express.Router();
 
 const taco = require("../models/taco");
-// router.get("/", function (req, res) {
-//     console.log('get function rungs')
-//     taco.selectAll(function (data) {
-//         const hbsObject = {
-//             tacos: data
-//         };
-//         console.log(hbsObject);
-//         res.render("index", hbsObject);
-//     });
-// });
+router.get("/", function (req, res) {
+    console.log('get function rungs')
+    taco.selectAll(function (data) {
+        const hbsObject = {
+            tacos: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+    });
+});
 // router.post("/api/tacos", function (req, res) {
 //     taco.insertOne([
 //         "taco_name", "shell", "vegetarian", "picked_up"
