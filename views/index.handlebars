@@ -79,36 +79,36 @@
 
 
 
-                    //         $(".tacoGrab").on("click", function (event) {
-                    //           event.preventDefault();
-                    //         console.log("it grabbed");
-                    //update route picked_up to false
-                    //        var id = $(this).data("id");
-                    //       var pickedUp = ($(this).data("pickedup"));
-                    //        console.log('weird')
-                    //      const nowGrabbed = {
-                    //        pickedup: true
-                    //  };
-                    //     console.log('ajax incoming')
-                    //  {{!-- $.ajax("api/tacos/" + id, {
-                    //       type: "PUT",
-                    //      data: nowGrabbed
-                    //  }).then(function () {
-                    //     console.log('aaaye the ajax ran!!')
-                    // });
-                    //   });
-                    //  $(".tacoEat").on("click", function (event) {
-                    //     event.preventDefault();
-                    //    console.log("it was eaten");
-                    //   const id = $(this).data("id")
-                    //  $.ajax({
-                    //     url: "/api/tacos" + id,
-                    //    type: "DELETE",
-                    //   success: function (result) {
-                    //      console.log('fuck yeah')
-                    // }
-                    //  });
-                    //});// --}}
+                $(".tacoGrab").on("click", function (event) {
+                    event.preventDefault();
+                    console.log("it grabbed");
+                    update route picked_up to false
+                    var id = $(this).data("id");
+                    var pickedUp = ($(this).data("pickedup"));
+                    console.log('weird')
+                    const nowGrabbed = {
+                        pickedup: true
+                    };
+                    console.log('ajax incoming')
+                    $.ajax("api/tacos/" + id, {
+                        type: "PUT",
+                        data: nowGrabbed
+                    }).then(function () {
+                        console.log('aaaye the ajax ran!!')
+                    });
+                });
+                $(".tacoEat").on("click", function (event) {
+                    event.preventDefault();
+                    console.log("it was eaten");
+                    const id = $(this).data("id")
+                    $.ajax({
+                        url: "/api/tacos" + id,
+                        type: "DELETE",
+                        success: function (result) {
+                            console.log('fuck yeah')
+                        }
+                    });
+                });
 
 
 
