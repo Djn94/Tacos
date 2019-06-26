@@ -43,31 +43,31 @@ const orm = {
             callback(result);
         })
     },
-    // updateOne: function (tableName, objColVals, condition, callback) {
-    //     var queryString = "UPDATE "; +tableName;
-    //     queryString += " SET ";
-    //     queryString += objToSql(objColVals);
-    //     queryString += " WHERE ";
-    //     queryString += condition;
-    //     console.log(queryString);
-    //     connection.query(queryString, function (err, result) {
-    //         if (err) throw err;
-    //         callback(result);
-    //     })
-    // },
-    //     delete: function (tableName, condition, callback) {
-    //         var queryString = "DELETE FROM " + tableName;
-    //         queryString += " WHERE ";
-    //         queryString += condition;
-    //         console.log(queryString);
-    //         connection.query(queryString, function (err, result) {
-    //             if (err) {
-    //                 throw err;
-    //             }
+    updateOne: function (tableName, objColVals, condition, callback) {
+        var queryString = "UPDATE "; +tableName;
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+        console.log(queryString);
+        connection.query(queryString, function (err, result) {
+            if (err) throw err;
+            callback(result);
+        })
+    },
+    delete: function (tableName, condition, callback) {
+        var queryString = "DELETE FROM " + tableName;
+        queryString += " WHERE ";
+        queryString += condition;
+        console.log(queryString);
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
 
-    //             callback(result);
-    //         });
-    //     }
+            callback(result);
+        });
+    }
 };
 console.log(orm);
 console.log('heres your orm')
