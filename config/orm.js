@@ -21,7 +21,7 @@ function objToSql(object) {
 };
 const orm = {
     selectAll: function (tableName, callback) {
-        var queryString = "SELECT * FROM " + "tacos" + ";";
+        var queryString = "SELECT * FROM " + "xh19lynmujp1jmsa.tacos" + ";";
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             callback(result)
