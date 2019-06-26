@@ -10,7 +10,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 var routes = require("./controllers/tacos_controller.js");
 app.use(routes);
-app.listen(PORT, function () {
+app.listen(process.env.PORT || PORT, function () {
     console.log(`server listening on ${PORT}`)
 })
 
