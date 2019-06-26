@@ -20,13 +20,13 @@ function objToSql(object) {
     return arr.toString();
 };
 var orm = {
-    //     selectAll: function (tableName, callback) {
-    //         var queryString = "SELECT * FROM " + tableName + ";";
-    //         connection.query(queryString, function (err, result) {
-    //             if (err) throw err;
-    //             callback(result)
-    //         });
-    //     },
+    selectAll: function (tableName, callback) {
+        var queryString = "SELECT * FROM " + tableName + ";";
+        connection.query(queryString, function (err, result) {
+            if (err) throw err;
+            callback(result)
+        });
+    },
     //     insertOne: function (tableName, cols, vals, callback) {
     //         var queryString = "INSERT INTO " + tableName;
 
