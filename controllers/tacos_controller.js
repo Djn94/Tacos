@@ -19,7 +19,7 @@ router.post("/api/tacos", function (req, res) {
         res.json({ id: result.insertId });
     });
 });
-router.put("/api/cats/:id", function (req, res) {
+router.put("/api/tacos/:id", function (req, res) {
     const id = "id =" + req.params.id;
     taco.updateOne(
         { picked_up: req.body.picked_up },
