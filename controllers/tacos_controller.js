@@ -19,23 +19,23 @@ router.post("/api/tacos", function (req, res) {
         res.json({ id: result.insertId });
     });
 });
-router.put("/api/tacos/:id", function (req, res) {
-    const id = "id =" + req.params.id;
-    taco.updateOne(
-        { picked_up: req.body.picked_up },
-        id, function (result) {
-            if (result.changedRows === 0) {
-                return res.status(404).end();
-            }
-            res.status(200).end();
-        })
-})
-router.delete("api/tacos/:id", function (req, res) {
-    const id = "id =" + req.params.id;
-    taco.delete(id, function (result) {
-        res.status(200).end();
-    });
-});
+// router.put("/api/tacos/:id", function (req, res) {
+//     const id = "id =" + req.params.id;
+//     taco.updateOne(
+//         { picked_up: req.body.picked_up },
+//         id, function (result) {
+//             if (result.changedRows === 0) {
+//                 return res.status(404).end();
+//             }
+//             res.status(200).end();
+//         })
+// })
+// router.delete("api/tacos/:id", function (req, res) {
+//     const id = "id =" + req.params.id;
+//     taco.delete(id, function (result) {
+//         res.status(200).end();
+//     });
+// });
 module.exports = router;
 
 
